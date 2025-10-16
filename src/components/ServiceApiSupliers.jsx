@@ -7,7 +7,7 @@ export default class ServiceApiSupliers extends Component {
     url = "https://services.odata.org/V4/Northwind/Northwind.svc/Suppliers";
     state = {
         supliers: [],
-        suplier: [],
+        suplier: null,
     };
 
     cargarSupliers = () => {
@@ -22,20 +22,10 @@ export default class ServiceApiSupliers extends Component {
         this.cargarSupliers();
     };
 
-    mostrarSuplier = () => {
-        this.state.supliers.map((suplier, index) => {
-            if (index + 1 === parseInt(this.cajaId.current.value)) {
-                this.state.suplier.push(suplier);
-                this.setState({
-                    suplier: this.state.suplier,
-                });
-                console.log(this.state.suplier);
-            }
-            return (
-                <ul>
-                    <li>{this.state.suplier}</li>
-                </ul>
-            );
+    mostrarSuplier = event => {
+        event.preventDefault();
+        this.setState({
+            suplier: this.state.supliers[parseInt(this.cajaId.current.value) - 1],
         });
     };
 
@@ -43,21 +33,43 @@ export default class ServiceApiSupliers extends Component {
         return (
             <div>
                 <h1>Servicio API Supliers</h1>
-                <form>
+                <form onSubmit={this.mostrarSuplier}>
                     <label>ID del supplier: </label>
                     <input type="text" ref={this.cajaId} />
-                    <button onClick={this.mostrarSuplier}>Mostrar datos</button>
-
-                    <ul>
-                        {this.state.supliers.map((suplier, index) => {
-                            return (
-                                <li key={index}>
-                                    <b>ID:</b> {suplier.SupplierID} --- <b>ContactName:</b> {suplier.ContactName}
-                                </li>
-                            );
-                        })}
-                    </ul>
+                    <button>Mostrar datos</button>
+                    <table>
+                        <thead>
+                            <tr>
+                                {this.state.suplier &&
+                                    Object.keys(this.state.suplier).map((key, index) => (
+                                        <th key={index} style={{ textAlign: "center" }}>
+                                            {key}
+                                        </th>
+                                    ))}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.state.suplier && (
+                                <tr>
+                                    {Object.values(this.state.suplier).map((value, index) => (
+                                        <td key={index} style={{ textAlign: "center" }}>
+                                            {value}
+                                        </td>
+                                    ))}
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
                 </form>
+                <ul>
+                    {this.state.supliers.map((suplier, index) => {
+                        return (
+                            <li key={index}>
+                                <b>ID:</b> {suplier.SupplierID} --- <b>ContactName:</b> {suplier.ContactName}
+                            </li>
+                        );
+                    })}
+                </ul>
             </div>
         );
     }
