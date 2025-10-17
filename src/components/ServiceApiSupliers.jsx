@@ -1,17 +1,17 @@
 import axios from "axios";
 import React, { Component } from "react";
+import Global from "../Global";
 
 export default class ServiceApiSupliers extends Component {
     cajaId = React.createRef();
-
-    url = "https://services.odata.org/V4/Northwind/Northwind.svc/Suppliers";
+    request = "suppliers";
     state = {
         supliers: [],
         suplier: null,
     };
 
     cargarSupliers = () => {
-        axios.get(this.url).then(response => {
+        axios.get(Global.urlNorhwind + this.request).then(response => {
             this.setState({
                 supliers: response.data.value,
             });
@@ -24,6 +24,18 @@ export default class ServiceApiSupliers extends Component {
 
     mostrarSuplier = event => {
         event.preventDefault();
+        /*OTRA MANERA*/
+        //REALIZANDO LA PETICION DE NUEVO
+        /*let id = parseInt(this.cajaId.current.value)
+        axios.get(Global.urlNorhwind + this.request).then(response => {
+            for ( var suplier of response.data.value){
+                if(suplier.SupplierID == id){
+                    this.setState({
+                        suplier: suplier
+                    )}
+                }
+            }
+        })*/
         this.setState({
             suplier: this.state.supliers[parseInt(this.cajaId.current.value) - 1],
         });
@@ -40,6 +52,7 @@ export default class ServiceApiSupliers extends Component {
                     <table>
                         <thead>
                             <tr>
+                                {/*LO PUEDO PINTAR UNO A UNO*/}
                                 {this.state.suplier &&
                                     Object.keys(this.state.suplier).map((key, index) => (
                                         <th key={index} style={{ textAlign: "center" }}>
