@@ -26,9 +26,9 @@ export default class EmpleadosOficios extends Component {
         let aux = [];
         let url = Global.urlEmpleados + this.requestEmpleado;
         axios.get(url).then(response => {
-            for (let oficios of response.data) {
-                if (!aux.includes(oficios.oficio)) {
-                    aux.push(oficios.oficio);
+            for (let empleados of response.data) {
+                if (!aux.includes(empleados.oficio)) {
+                    aux.push(empleados.oficio);
                 }
             }
             this.setState({
