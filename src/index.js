@@ -4,11 +4,14 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import Router from "./components/rutascollatz/Router";
 import MenuRutas from "./components/rutascollatz/MenuRutas";
+import 'bootstrap/dist/css/bootstrap.min.css'
+import $ from 'jquery'
+import Popper from "popper.js";
+import 'bootstrap/dist/js/bootstrap.bundle'
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <div>
-        <MenuRutas />
         <Router />
     </div>
 );

@@ -1,16 +1,15 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 
 export default class MenuRutas extends Component {
     render() {
         return (
-            <div>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/collatz/8">Collatz 8</a></li>
-                    <li><a href="/collatz/23">Collatz 23</a></li>
-                    <li><a href="/collatz/12">Collatz 12</a></li>
-                </ul>
-            </div>
+            <nav style={{backgroundColor:"black", padding:"20px"}}>
+                <NavLink style={{padding:"20px", color:"white", textDecoration:"none"}} to="/">Home</NavLink>
+                <NavLink style={{padding:"20px", color:"white", textDecoration:"none"}} to="/collatz/8">Collatz 8</NavLink>
+                <NavLink style={{padding:"20px", color:"white", textDecoration:"none"}} to="/collatz/23">Collatz 23</NavLink>
+                <NavLink style={{padding:"20px", color:"white", textDecoration:"none"}} to="/collatz/12">Collatz 12</NavLink>
+            </nav>
         );
     }
 }
