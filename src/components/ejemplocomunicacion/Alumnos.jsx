@@ -10,7 +10,7 @@ export default class Alumnos extends Component {
     buscarAlumnos = () => {
         let curso = this.props.curso;
         let request = "api/alumnos/filtrarcurso/" + curso;
-        axios.get(Global.urlAlumnos + request).then(response => {
+        axios.get(Global.urlEjemplos + request).then(response => {
             this.setState({
                 alumnos: response.data,
             });

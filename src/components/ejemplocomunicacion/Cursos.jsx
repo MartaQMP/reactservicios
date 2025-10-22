@@ -21,7 +21,7 @@ export default class Cursos extends Component {
 
     cargarCursos = () => {
         let request = "api/alumnos/cursos";
-        axios.get(Global.urlAlumnos + request).then(response => {
+        axios.get(Global.urlEjemplos + request).then(response => {
             this.setState({
                 cursos: response.data,
             });
@@ -31,7 +31,7 @@ export default class Cursos extends Component {
     buscarDetallesALumno = idAlumno => {
         console.log(idAlumno)
         let request = "api/alumnos/findalumno/"+idAlumno;
-        axios.get(Global.urlAlumnos + request).then(response => {
+        axios.get(Global.urlEjemplos + request).then(response => {
             this.setState({
                 alumno: response.data,
             });

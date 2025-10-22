@@ -2,7 +2,7 @@ let Global = {
     urlNorhwind: "https://services.odata.org/V4/Northwind/Northwind.svc/",
     urlEmpleados: "https://apiempleadosspgs.azurewebsites.net/",
     urlDepartamentos: "https://apicruddepartamentospgs.azurewebsites.net/",
-    urlAlumnos: "https://apiejemplos.azurewebsites.net/",
+    urlEjemplos: "https://apiejemplos.azurewebsites.net/",
 };
 
 export default Global;
