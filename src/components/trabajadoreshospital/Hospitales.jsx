@@ -39,7 +39,7 @@ export default class Hospitales extends Component {
     };
 
     incrementarSalarios = event => {
-        event.preventDefault();
+        this.getHospitalesSeleccionados(event);
         let data = "";
         for (let id of this.state.hospitalesSeleccionados) {
             data += "idhospital=" + id + "&";
@@ -79,8 +79,8 @@ export default class Hospitales extends Component {
                         Mostrar trabajadores
                     </button>
                     <br />
-                    <label>Incremento: </label>
-                    <input ref={this.cajaIncremento} />
+                    <label className="form-label">Incremento: </label>
+                    <input className="form-control" ref={this.cajaIncremento} />
                     <button onClick={this.incrementarSalarios} className="btn btn-primary">
                         Incrementar
                     </button>

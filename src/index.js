@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import Router from "./components/rutascollatz/Router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import $ from "jquery";
 import Popper from "popper.js";
